@@ -953,3 +953,22 @@ function statsform_form_page_two_submit($form, &$form_state) {
   // element in the array is the array of options. For more information on the
   // available options, see http://api.drupal.org/url.
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function statsform_page_alter(&$page) {
+  $page['#theme'] = 'hijack';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function statsform_theme($existing, $type, $theme, $path) {
+  return array(
+    'hijack' => array(
+      'template' => 'page--hijacked',
+      'render element' => 'page',
+    ),
+  );
+}
